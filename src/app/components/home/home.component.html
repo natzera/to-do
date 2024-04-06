@@ -1,0 +1,35 @@
+<app-header />
+<section role="region">
+  <div class="container">
+    <h1>Adicionar nova task</h1>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <input type="text" placeholder="Digite o nome da sua task" formControlName="name" />
+      @if(taskForm.get('name')?.hasError('required') && taskForm.get('name')?.touched) {
+      <div class="required">*Campo obrigatório</div>
+      }
+      <button type="submit" [disabled]="taskForm.invalid">Adicionar</button>
+    </form>
+
+    <div class="task-list">
+      <table>
+        <tbody>
+          @for (task of tasks; track $index) {
+          <tr [class.completed]="task.isCompleted">
+            <td class=" check-input">
+              <input type="checkbox" id="checkbox{{$index}}" class="styled-checkbox" (change)="toggleCompletion(task)"
+                [checked]="task.isCompleted" />
+              <label for="checkbox{{$index}}" class="checkbox-label"></label>
+            </td>
+            <td> {{task.name}} </td>
+
+            <td class="delete-button">
+              <button class="delete-button" (click)="deleteTask(task.id)"
+                [style.display]="task.isCompleted ? 'none' : 'inline-block'">Deletar</button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
