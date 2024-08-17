@@ -1,0 +1,34 @@
+@import "../../theme";
+@import "../../variables";
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+  background-color: $white;
+
+  div.container {
+    width: 400px;
+    height: auto;
+
+    @include breakpoint(sm) {
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 20px;
+      line-height: 20px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+
+      @include breakpoint(sm) {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 14px;
+      }
+    }
+  }
+}

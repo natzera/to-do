@@ -1,0 +1,39 @@
+<div class="task-list">
+  <table>
+    <tbody>
+      @for (task of tasks; track $index) {
+      <tr>
+        <td class="check-input">
+          <input
+            type="checkbox"
+            id="checkbox{{ $index }}"
+            class="styled-checkbox"
+            (change)="toggleCompletion(task)"
+            [checked]="task.isCompleted"
+          />
+          <label for="checkbox{{ $index }}" class="checkbox-label"></label>
+        </td>
+        <td class="list-items">
+          <input
+            type="text"
+            [(ngModel)]="task.name"
+            class="styled-input"
+            (blur)="updateTask(task)"
+            [class.completed]="task.isCompleted"
+          />
+        </td>
+
+        <td class="delete-button">
+          <button
+            class="delete-button"
+            (click)="deleteTask(task.id)"
+            [style.display]="task.isCompleted ? 'none' : 'inline-block'"
+          >
+            Deletar
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
