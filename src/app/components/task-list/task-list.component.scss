@@ -1,0 +1,120 @@
+@import "../../theme";
+@import "../../variables";
+
+div.task-list {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  margin-top: 30px;
+  height: 45vh;
+
+  &::-webkit-scrollbar {
+    width: 17px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray;
+    border-radius: 20px;
+    border: 5px solid $white;
+  }
+
+  @include breakpoint(sm) {
+    margin-top: 60px;
+  }
+
+  table {
+    width: 100%;
+    position: relative;
+
+    tbody tr:nth-child(odd) {
+      background-color: $white;
+    }
+
+    tr {
+      text-decoration: none;
+
+      td {
+        padding: 10px;
+        font-size: 14px;
+        line-height: 18px;
+        color: $black;
+        vertical-align: middle;
+
+        &.check-input {
+          width: 30px;
+        }
+
+        &.button {
+          width: 96px;
+        }
+
+        &.list-items {
+          input {
+            border: none;
+            outline: 0;
+            font-size: 14px;
+            line-height: 22px;
+            background: transparent;
+
+            &.completed {
+              text-decoration: line-through;
+            }
+          }
+        }
+
+        input.styled-checkbox {
+          display: none;
+
+          &:checked + .checkbox-label::before {
+            background-color: $orange;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23fcfdfd' viewBox='0 0 256 256'%3E%3Cpath d='M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center center;
+            transition: 0.3s ease-in-out;
+          }
+        }
+
+        label.checkbox-label {
+          color: $gray-lightest;
+
+          &::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid $gray-light;
+            cursor: pointer;
+            background-color: $gray-lightest;
+            transition: 0.3s ease-in-out;
+
+            @include breakpoint(sm) {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+
+        button {
+          width: 100%;
+          height: 24px;
+          cursor: pointer;
+          border: 0;
+          border-radius: 5px;
+          color: $white;
+          font-size: 10px;
+          line-height: 10px;
+          font-weight: 600;
+
+          &.delete-button {
+            background-color: $red;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    placeholder="Digite o nome da sua task"
+    formControlName="name"
+  />
+  @if(taskForm.get('name')?.hasError('required') &&
+  taskForm.get('name')?.touched) {
+  <div class="required">*Campo obrigatório</div>
+  }
+  <button type="submit" [disabled]="taskForm.invalid">Adicionar</button>
+</form>
