@@ -3,7 +3,23 @@
   <div class="container">
     <h1>Adicionar nova task</h1>
     <app-task-form />
-    <app-task-list />
+
+    <h4>Minha lista</h4>
+    @defer(on idle) {
+      @if (errorMessage) {
+        <div class="container-loading">
+          <p>{{ errorMessage }}</p>
+        </div>
+      } @else {
+        <app-task-list />
+      }
+    } @loading(minimum 2s) {
+      <div class="container-loading">
+        <img src="../../../assets/loading-gif.gif" alt="Carregando" />
+        <p>Carregando as informações</p>
+      </div>
+    } @error() {
+      <p>Ocorreu um erro ao carregar a lista de tarefas.</p>
+    }
   </div>
 </section>
-

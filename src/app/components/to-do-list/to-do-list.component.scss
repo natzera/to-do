@@ -12,10 +12,11 @@ section {
 
   div.container {
     width: 400px;
-    height: auto;
+    height: 600px;
 
     @include breakpoint(sm) {
       padding: 0 20px;
+      height: auto;
     }
 
     h1 {
@@ -28,6 +29,39 @@ section {
         font-size: 16px;
         line-height: 24px;
         margin-bottom: 14px;
+      }
+    }
+
+    h4 {
+      font-size: 16px;
+      line-height: 20px;
+      margin: 40px 0 20px;
+
+      @include breakpoint(sm) {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 14px;
+      }
+    }
+
+    div.container-loading {
+      width: 100%;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 40px;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 14px;
       }
     }
   }
